@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Persona Patman</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="_container">
+        <div class="header__wrapper">
+          <a class="logo-link header__logo" href="./index.html">
+            <img src="assets/img/logo.svg" alt="logo" draggable="false"
+          /></a>
+          <nav class="menu header__menu">
+            <ul class="menu-list">
+              <li class="menu-list__item">
+                <a class="menu__link" href="./about.html">Про Нас</a>
+              </li>
+              <li class="menu-list__item">
+                <a class="menu__link" href="./immigration.html">Іміграція</a>
+              </li>
+              <li class="menu-list__item">
+                <a class="menu__link" href="./recruiting.html">Рекрутинг</a>
+              </li>
+              <li class="menu-list__item">
+                <a class="menu__link" href="./partnership.html">Партнерство</a>
+              </li>
+              <li class="menu-list__item">
+                <a class="menu__link" href="./team.html">Команда</a>
+              </li>
+              <li class="menu-list__item">
+                <a class="menu__link" href="./cases.html">Кейси</a>
+              </li>
+              <li class="menu-list__item">
+                <a class="menu__link" href="./contacts.html">Контакти</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="header__buttons">
+            <ul class="menu__lang desktop">
+              <li>
+                <span class="lang-item lang-item-current"
+                  >eng<img
+                    src="assets/img/arrow-down.svg"
+                    alt="language toggle"
+                /></span>
+                <ul>
+                  <li
+                    class="lang-item lang-item-1 lang-item-en lang-item-first"
+                  >
+                    <a lang="rus-RU" hreflang="rus-RU" href="#1">ua</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <button class="menu-burger popup-open" data-popup="_popup-menu">
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="popup popup-menu menu__popup"
+        data-popupname="_popup-menu"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div class="popup__overlay"></div>
+        <div class="popup__additional"></div>
+        <div class="popup__scroll">
+          <div class="popup__wrapper">
+            <button class="popup__close hidden">
+              <img src="assets/img/popup-close.svg" alt="close" />
+            </button>
+            <div class="popup__content">
+              <button class="popup__close">
+                <img src="assets/img/popup-close-black.svg" alt="close" />
+              </button>
+              <nav class="menu">
+                <ul class="menu-list">
+                  <li class="menu-list__item">
+                    <a class="menu__link anchor" href="#" data-goto="undefined"
+                      >Про Нас</a
+                    >
+                  </li>
+                  <li class="menu-list__item">
+                    <a class="menu__link anchor" href="#" data-goto="undefined"
+                      >Іміграція</a
+                    >
+                  </li>
+                  <li class="menu-list__item">
+                    <a class="menu__link anchor" href="#" data-goto="undefined"
+                      >Рекрутинг</a
+                    >
+                  </li>
+                  <li class="menu-list__item">
+                    <a class="menu__link anchor" href="#" data-goto="undefined"
+                      >Партнерство</a
+                    >
+                  </li>
+                  <li class="menu-list__item">
+                    <a class="menu__link anchor" href="#" data-goto="undefined"
+                      >Команда</a
+                    >
+                  </li>
+                  <li class="menu-list__item">
+                    <a class="menu__link anchor" href="#" data-goto="undefined"
+                      >Кейси</a
+                    >
+                  </li>
+                  <li class="menu-list__item">
+                    <a class="menu__link anchor" href="#" data-goto="undefined"
+                      >Контакти</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+              <ul class="menu__lang popup-menu-lang">
+                <li><p class="lang-item lang-item-current">укр</p></li>
+                <li><a class="lang-item" href="#">eng</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="popup popup-common about__popup"
+        data-popupname="_popup-about"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div class="popup__overlay"></div>
+        <div class="popup__additional"></div>
+        <div class="popup__scroll">
+          <div class="popup__wrapper">
+            <button class="popup__close">
+              <img src="assets/img/popup-close.svg" alt="close" />
+            </button>
+            <div class="popup__content"><p>default popup</p></div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="popup popup-feedback thanks__popup"
+        data-popupname="_popup-thanks"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div class="popup__overlay"></div>
+        <div class="popup__additional"></div>
+        <div class="popup__scroll">
+          <div class="popup__wrapper">
+            <button class="popup__close">
+              <img src="assets/img/popup-close.svg" alt="close" />
+            </button>
+            <div class="popup__content">
+              <div class="feedback">
+                <div class="feedback__label">
+                  <img src="assets/img/success.svg" alt="success" />
+                </div>
+                <p class="feedback__title">
+                  Дякуємо! Форму успішно відправлено.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="popup popup-feedback error__popup"
+        data-popupname="_popup-error"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div class="popup__overlay"></div>
+        <div class="popup__additional"></div>
+        <div class="popup__scroll">
+          <div class="popup__wrapper">
+            <button class="popup__close">
+              <img src="assets/img/popup-close.svg" alt="close" />
+            </button>
+            <div class="popup__content">
+              <div class="feedback">
+                <div class="feedback__label">
+                  <img src="assets/img/error.svg" alt="error" />
+                </div>
+                <p class="feedback__title">
+                  Вибачте, сталася помилка. Спробуйте пізніше
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="popup popup-form form__popup fullscreen-phone"
+        data-popupname="_popup-form"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div class="popup__overlay"></div>
+        <div class="popup__additional"></div>
+        <div class="popup__scroll">
+          <div class="popup__wrapper">
+            <button class="popup__close">
+              <img
+                class="desktop"
+                src="assets/img/popup-close.svg"
+                alt="close"
+              /><img
+                class="mobile"
+                src="assets/img/popup-close-black.svg"
+                alt="close"
+              />
+            </button>
+            <div class="popup__content">
+              <div class="action">
+                <p class="action__title">Отримати консультацію</p>
+                <div class="action__main">
+                  <form class="form action__form" id="form-popup" action="post">
+                    <div>
+                      <label for="popup-select">
+                        <strong>Тип звернення</strong
+                        ><select
+                          id="popup-select"
+                          name="select"
+                          form="form-popup"
+                        >
+                          <option value="value 1" selected>value 1</option>
+                          <option value="value 2">value 2</option>
+                          <option value="value 3">value 3</option></select
+                        ><span class="wpcf7-not-valid-tip"
+                          >Невірний формат</span
+                        ></label
+                      >
+                    </div>
+                    <div>
+                      <label for="popup-name">
+                        <strong>Ім’я</strong
+                        ><input id="popup-name" type="text" name="name" /><span
+                          class="wpcf7-not-valid-tip"
+                          >Невірний формат</span
+                        ></label
+                      ><label for="popup-lastname">
+                        <strong>Прізвище</strong
+                        ><input
+                          id="popup-lastname"
+                          type="text"
+                          name="lastname"
+                        /><span class="wpcf7-not-valid-tip"
+                          >Невірний формат</span
+                        ></label
+                      >
+                    </div>
+                    <div>
+                      <label for="popup-email">
+                        <strong>Email</strong
+                        ><input
+                          id="popup-email"
+                          type="email"
+                          name="email"
+                        /><span class="wpcf7-not-valid-tip"
+                          >Невірний формат</span
+                        ></label
+                      ><label for="popup-telephone">
+                        <strong>Телефон</strong
+                        ><input
+                          id="popup-telephone"
+                          type="tel"
+                          name="telephone"
+                        /><span class="wpcf7-not-valid-tip"
+                          >Невірний формат</span
+                        ></label
+                      >
+                    </div>
+                    <div>
+                      <label for="popup-request">
+                        <strong>Чим ми можемо допомогти</strong
+                        ><textarea id="popup-request" name="request"></textarea
+                        ><span class="wpcf7-not-valid-tip"
+                          >Невірний формат</span
+                        ></label
+                      >
+                    </div>
+                    <p><button type="submit">Відправити</button></p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="banner" data-animate="clip-path">
+      <div class="banner-slider swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="banner-bg">
+              <div class="banner-bg__media">
+                <img
+                  class="desktop"
+                  src="assets/img/banner.jpg"
+                  alt="banner"
+                /><img
+                  class="mobile"
+                  src="assets/img/banner-mobile.jpg"
+                  alt="banner"
+                />
+              </div>
+            </div>
+            <div class="_container banner__container">
+              <div class="banner__wrapper">
+                <div class="banner-slider__item">
+                  <h1 class="banner__title">Імміграція <br />і легалізація</h1>
+                  <p class="banner__subtitle">
+                    Ми знаємо як зроби процес імміграції легким і безпечним
+                  </p>
+                  <a
+                    class="banner__button button-light"
+                    href="./immigration.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span>Докладніше</span
+                    ><svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 13L18.17 13L15.59 15.59L17 17L22 12L17 7L15.59 8.41L18.17 11L2 11L2 13Z"
+                        fill="white"
+                      /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="banner-bg">
+              <div class="banner-bg__media">
+                <img
+                  class="desktop"
+                  src="assets/img/banner-2.jpg"
+                  alt="banner"
+                /><img
+                  class="mobile"
+                  src="assets/img/banner-2-mobile.jpg"
+                  alt="banner"
+                />
+              </div>
+            </div>
+            <div class="_container banner__container">
+              <div class="banner__wrapper">
+                <div class="banner-slider__item">
+                  <h1 class="banner__title">Рекрутинг <br />і адаптація</h1>
+                  <p class="banner__subtitle">
+                    Ми знаємо як швидко знайти працівника і роботодавця
+                  </p>
+                  <a
+                    class="banner__button button-light"
+                    href="./recruiting.html"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span>Докладніше</span
+                    ><svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 13L18.17 13L15.59 15.59L17 17L22 12L17 7L15.59 8.41L18.17 11L2 11L2 13Z"
+                        fill="white"
+                      /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="banner-slider-controls">
+        <div class="banner-slider-pagination">pagination</div>
+      </div>
+    </section>
+    <section class="possibilities">
+      <div class="_container">
+        <div class="possibilities__wrapper">
+          <h2 class="possibilities__title">Наші можливості</h2>
+          <ul class="possibilities__list cards-list">
+            <li class="card">
+              <div class="card__container">
+                <div class="card__inner">
+                  <div class="card__header">
+                    <div class="card__label">
+                      <img
+                        src="assets/img/possibilities/possibilities-1.svg"
+                        alt="possibilities-1"
+                      />
+                    </div>
+                    <h3 class="card__title">Імміграційне право</h3>
+                  </div>
+                  <div class="card__typography">
+                    <p>Ми захищаємо іноземців за кордоном.</p>
+                    <br />
+                    <br />
+                    <p>
+                      Ми готові проконсультувати про всі, дозволені законом,
+                      варіанти отримання посвідки на проживання чи громадянства
+                      для вас чи ваших іноземних працівників.
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                      Ми надаємо послуги в Україні, країнах Балтії, Чехії,
+                      Німеччині.
+                    </p>
+                  </div>
+                  <a class="card-link link-more" href="#"
+                    ><span class="link-more__text">Детальніше</span
+                    ><span class="link-more__label"
+                      ><img
+                        src="assets/img/arrow-more.svg"
+                        alt="possibilities-details"
+                        draggable="false" /></span
+                  ></a>
+                </div>
+              </div>
+            </li>
+            <li class="card">
+              <div class="card__container">
+                <div class="card__inner">
+                  <div class="card__header">
+                    <div class="card__label">
+                      <img
+                        src="assets/img/possibilities/possibilities-2.svg"
+                        alt="possibilities-2"
+                      />
+                    </div>
+                    <h3 class="card__title">Легалізація іноземців</h3>
+                  </div>
+                  <div class="card__typography">
+                    <p>
+                      Наша команда допоможе вам пройти процедуру легалізації в
+                      Україні, країнах Балтії, Чехії, Німеччині.
+                    </p>
+                    <br />
+                    <br />
+                    <p>Ви спілкуєтесь тільки з нами.</p>
+                    <br />
+                    <br />
+                    <p>
+                      Ми беремо на себе всю роботу щодо коммунікації з
+                      прикордонною, міграційною, податковою, митною службами.
+                    </p>
+                  </div>
+                  <a class="card-link link-more" href="#"
+                    ><span class="link-more__text">Детальніше</span
+                    ><span class="link-more__label"
+                      ><img
+                        src="assets/img/arrow-more.svg"
+                        alt="possibilities-details"
+                        draggable="false" /></span
+                  ></a>
+                </div>
+              </div>
+            </li>
+            <li class="card">
+              <div class="card__container">
+                <div class="card__inner">
+                  <div class="card__header">
+                    <div class="card__label">
+                      <img
+                        src="assets/img/possibilities/possibilities-3.svg"
+                        alt="possibilities-3"
+                      />
+                    </div>
+                    <h3 class="card__title">Пошук іноземних працівників</h3>
+                  </div>
+                  <div class="card__typography">
+                    <p>
+                      Вам потрібен технічних чи низькокваліфікований персонал?
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                      Ми швидко знаходимо робітників - вихідців з України,
+                      Казахстану, країн Середньої Азії і Кавказу.
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                      Ми спеціалізуємось на персоналі для заводів і фабрик,
+                      сільского господарства, транспорту, сфери послуг і HoReCa.
+                    </p>
+                  </div>
+                  <a class="card-link link-more" href="#"
+                    ><span class="link-more__text">Детальніше</span
+                    ><span class="link-more__label"
+                      ><img
+                        src="assets/img/arrow-more.svg"
+                        alt="possibilities-details"
+                        draggable="false" /></span
+                  ></a>
+                </div>
+              </div>
+            </li>
+            <li class="card">
+              <div class="card__container">
+                <div class="card__inner">
+                  <div class="card__header">
+                    <div class="card__label">
+                      <img
+                        src="assets/img/possibilities/possibilities-4.svg"
+                        alt="possibilities-4"
+                      />
+                    </div>
+                    <h3 class="card__title">Працевлаштування за кордоном</h3>
+                  </div>
+                  <div class="card__typography">
+                    <p>Ви працюєте за кордоном і хочете змінити роботу?</p>
+                    <br />
+                    <br />
+                    <p>
+                      Наша команда з'єднає вас з новим роботодавцем і
+                      забезпечить легальне працевлаштування.
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                      Ми спеціалізуємось на працевлаштуванні в країнах Балтії,
+                      Німеччині, Чехії, Великобританії, Україні і Скандинавських
+                      країнах.
+                    </p>
+                  </div>
+                  <a class="card-link link-more" href="#"
+                    ><span class="link-more__text">Детальніше</span
+                    ><span class="link-more__label"
+                      ><img
+                        src="assets/img/arrow-more.svg"
+                        alt="possibilities-details"
+                        draggable="false" /></span
+                  ></a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="news-section">
+      <div class="_container">
+        <div class="news-section__wrapper">
+          <div class="news-section__header">
+            <h2 class="news-section__title">Новини та події</h2>
+            <a class="button-dark news-section__button" href="./news.html"
+              ><span>Усі новини</span
+              ><svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 13L18.17 13L15.59 15.59L17 17L22 12L17 7L15.59 8.41L18.17 11L2 11L2 13Z"
+                  fill="white"
+                ></path></svg
+            ></a>
+          </div>
+          <ul class="news-list">
+            <li class="news-list__li">
+              <a class="news-list__item" href="./news-article.html"
+                ><span class="news-list-img"
+                  ><span class="news-list-img__decoration" aria-hidden="true"
+                    ><img
+                      src="assets/img/star.svg"
+                      alt="decoration"
+                      draggable="false" /></span
+                  ><span class="news-list-img__content"
+                    ><span class="news-list-img__container"
+                      ><img
+                        src="assets/img/news/news-1.jpg"
+                        alt="Persona Patman провела зустріч з компаніями-членами Латвійської торгово-промислової палати з метою обговорення потреб латвійських компаній в рекрутингових послугах"
+                        loading="lazy" /></span></span
+                ></span>
+                <h3 class="news-list__title">
+                  Persona Patman провела зустріч з компаніями-членами
+                  Латвійської торгово-промислової палати з метою обговорення
+                  потреб латвійських компаній в рекрутингових послугах
+                </h3>
+                <span class="news-list__description"
+                  >У липні-серпні 2023 року менеджери Persona Patman провели
+                  серію зустрічей з компаніями-членами Латвійської
+                  торгово-промислової палати, які відчувають гостру потребу в
+                  кваліфікованій робочій силі (“синіх комірцях”). Більшість
+                  компаній висловили зацікавленість до співпраці з Persona
+                  Patman з метою вирішення потреб в заповненні вакансій і
+                  забезпеченні стабільній роботі виробництв на своїх
+                  підприємствах.</span
+                ><span class="news-list-more link-more"
+                  ><span class="link-more__text">Детальніше</span
+                  ><span class="link-more__label"
+                    ><img
+                      src="assets/img/arrow-more.svg"
+                      alt="possibilities-details"
+                      draggable="false" /></span></span
+              ></a>
+            </li>
+            <li class="news-list__li">
+              <a class="news-list__item" href="./news-article.html"
+                ><span class="news-list-img"
+                  ><span class="news-list-img__decoration" aria-hidden="true"
+                    ><img
+                      src="assets/img/star.svg"
+                      alt="decoration"
+                      draggable="false" /></span
+                  ><span class="news-list-img__content"
+                    ><span class="news-list-img__container"
+                      ><img
+                        src="assets/img/news/news-2.jpg"
+                        alt="Persona Patman підписала контракт на пошук спеціалістів-мігрантів для компанії SIA “Saukas Kudra” яка є найбільшим видобувальником торфу в Латвії."
+                        loading="lazy" /></span></span
+                ></span>
+                <h3 class="news-list__title">
+                  Persona Patman підписала контракт на пошук
+                  спеціалістів-мігрантів для компанії SIA “Saukas Kudra” яка є
+                  найбільшим видобувальником торфу в Латвії.
+                </h3>
+                <span class="news-list__description"
+                  >У червні 2023 року Persona Patman і компанія SIA “Saukas
+                  Kudra” домовились на сезонній основі забезпечувати необхідними
+                  трудовими мігрантами найбільшого видобувальника торфу в
+                  країні. Це дозволить на безперебійній основі забезпечити
+                  виробництво продукції і її поставку клієнтам компанії.</span
+                ><span class="news-list-more link-more"
+                  ><span class="link-more__text">Детальніше</span
+                  ><span class="link-more__label"
+                    ><img
+                      src="assets/img/arrow-more.svg"
+                      alt="possibilities-details"
+                      draggable="false" /></span></span
+              ></a>
+            </li>
+            <li class="news-list__li">
+              <a class="news-list__item" href="./news-article.html"
+                ><span class="news-list-img"
+                  ><span class="news-list-img__decoration" aria-hidden="true"
+                    ><img
+                      src="assets/img/star.svg"
+                      alt="decoration"
+                      draggable="false" /></span
+                  ><span class="news-list-img__content"
+                    ><span class="news-list-img__container"
+                      ><img
+                        src="assets/img/news/news-3.jpg"
+                        alt="Приклад заголовку новин Назва новини номер 3"
+                        loading="lazy" /></span></span
+                ></span>
+                <h3 class="news-list__title">
+                  Приклад заголовку новин Назва новини номер 3
+                </h3>
+                <span class="news-list__description"
+                  >Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been...</span
+                ><span class="news-list-more link-more"
+                  ><span class="link-more__text">Детальніше</span
+                  ><span class="link-more__label"
+                    ><img
+                      src="assets/img/arrow-more.svg"
+                      alt="possibilities-details"
+                      draggable="false" /></span></span
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="statistic">
+      <div class="_container">
+        <div class="statistic__wrapper">
+          <h2 class="statistic__title">Бренд, що має репутацію</h2>
+          <ul class="statistic-list counter-container">
+            <li class="statistic-list__item">
+              <p
+                class="statistic-list__value counter has-plus"
+                data-value="6800"
+              >
+                6800
+              </p>
+              <p class="statistic-list__name">
+                працівників,<br />
+                задоволених нашими послугами з їх працевлаштування
+              </p>
+            </li>
+            <li class="statistic-list__item">
+              <p class="statistic-list__value counter has-plus" data-value="10">
+                10
+              </p>
+              <p class="statistic-list__name">
+                Для вибору<br />
+                прцевлаштування
+              </p>
+            </li>
+            <li class="statistic-list__item">
+              <p
+                class="statistic-list__value counter has-plus"
+                data-value="300"
+              >
+                300
+              </p>
+              <p class="statistic-list__name">
+                компаній,<br />
+                задоволених результатами роботи з нами
+              </p>
+            </li>
+            <li class="statistic-list__item">
+              <p class="statistic-list__value counter" data-value="25">25</p>
+              <p class="statistic-list__name">
+                професіоналів<br />
+                в нашій команді
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <article class="section footer-additional">
+        <div class="_container">
+          <div class="footer-additional__wrapper">
+            <div class="footer-additional__typography">
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry.
+              </p>
+              <br />
+              <br />
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing
+                and typesetting industry.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <div class="_container footer__container">
+        <div class="footer__wrapper">
+          <nav class="footer-navigation">
+            <ul class="footer-navigation__list">
+              <li class="footer-navigation__li">
+                <ul class="footer-navigation__col">
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Про нас</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Команда</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Партнерство</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Про Боно</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Новини</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer-navigation__li">
+                <ul class="footer-navigation__col">
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Імміграція</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Легалізація</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Кейси</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer-navigation__li">
+                <ul class="footer-navigation__col">
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Рекрутинг</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Адаптація</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Кейси</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#"
+                      >Наші партнери</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="footer-navigation__li">
+                <ul class="footer-navigation__col">
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Для урядів</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#"
+                      >Для місцевої влади</a
+                    >
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#"
+                      >Для донорів і NGO</a
+                    >
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#"
+                      >Для банків і фінтеху</a
+                    >
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#">Для компаній</a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="#"
+                      >Для мігрантів</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="footer-bottom">
+            <div class="footer-bottom__item">
+              <p class="footer__copyright">
+                © 2023 Persona Patman LLC | All Rights Reserved
+              </p>
+            </div>
+            <div class="footer-bottom__item">
+              <ul class="footer-bottom__list">
+                <li class="footer-bottom__list__li">
+                  <a
+                    class="footer-bottom___link"
+                    href="#"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Terms of Use</a
+                  >
+                </li>
+                <li class="footer-bottom__list__li">
+                  <a
+                    class="footer-bottom___link"
+                    href="#"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Privacy Policy</a
+                  >
+                </li>
+                <li class="footer-bottom__list__li">
+                  <a
+                    class="footer-bottom___link"
+                    href="#"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Cookie Policy</a
+                  >
+                </li>
+                <li class="footer-bottom__list__li">
+                  <a
+                    class="footer-bottom___link"
+                    href="#"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Disclaimer</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-bottom__item">
+              <a class="develop" href="#" target="_blank" rel="noreferrer"
+                ><span class="develop__text">Розробка сайту</span
+                ><span class="develop__img"
+                  ><img src="assets/img/impulse.svg" alt="impulse" /></span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vevet@2.17.0/build/cdn/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
