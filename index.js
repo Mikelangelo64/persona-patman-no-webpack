@@ -26,6 +26,27 @@ vevet.pageLoad.onLoaded(function () {
         return scrollBar;
     };
     scrollBarInit();
+    //config
+    //clearScrollListener
+    var clearScrollListener = function (listener) {
+        window.removeEventListener('scroll', listener);
+    };
+    var debounce = function (_a) {
+        var callback = _a.callback, _b = _a.wait, wait = _b === void 0 ? 250 : _b, _c = _a.isImmediate, isImmediate = _c === void 0 ? false : _c;
+        var timeout;
+        return function () {
+            var later = function () {
+                timeout = undefined;
+                callback();
+            };
+            var isCallNow = isImmediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (isCallNow) {
+                callback();
+            }
+        };
+    };
     var useObserver = function (_a) {
         var target = _a.target, callbackIn = _a.callbackIn, callbackOut = _a.callbackOut, _b = _a.isCallOnce, isCallOnce = _b === void 0 ? false : _b;
         var observer = new IntersectionObserver(function (entries) {
@@ -87,9 +108,15 @@ vevet.pageLoad.onLoaded(function () {
         }
         if (scroll) {
             var element = scroll;
-            element.style.opacity = "".concat(easing);
+            if (!parent.classList.contains('popup-search')) {
+                element.style.opacity = "".concat(easing);
+            }
             if (parent.classList.contains('popup-menu')) {
                 element.style.transform = "translateX(".concat((1 - easing) * 100, "%)");
+            }
+            else if (parent.classList.contains('popup-search')) {
+                var height = parent.getBoundingClientRect().height;
+                element.style.transform = "translateY(".concat((easing - 1) * height, "rem)");
             }
             else {
                 element.style.transform = "translateY(".concat((1 - easing) * 2, "rem)");
@@ -117,8 +144,10 @@ vevet.pageLoad.onLoaded(function () {
         timeline.addCallback('start', function () {
             var _a, _b;
             if (!timeline.isReversed) {
-                (_a = document.querySelector('html')) === null || _a === void 0 ? void 0 : _a.classList.add('lock');
-                (_b = document.querySelector('body')) === null || _b === void 0 ? void 0 : _b.classList.add('lock');
+                if (!parent.classList.contains('popup-search')) {
+                    (_a = document.querySelector('html')) === null || _a === void 0 ? void 0 : _a.classList.add('lock');
+                    (_b = document.querySelector('body')) === null || _b === void 0 ? void 0 : _b.classList.add('lock');
+                }
                 parent.classList.add('_opened');
                 if (video) {
                     video.play();
@@ -201,6 +230,14 @@ vevet.pageLoad.onLoaded(function () {
                     (_d = _this._video) === null || _d === void 0 ? void 0 : _d.pause();
                 }
             });
+            if (this._parent.classList.contains('popup-search')) {
+                window.addEventListener('scroll', function () {
+                    var _a;
+                    if (_this._parent.classList.contains('_opened')) {
+                        (_a = _this._timeline) === null || _a === void 0 ? void 0 : _a.reverse();
+                    }
+                });
+            }
         }
         Object.defineProperty(Popup.prototype, "parent", {
             get: function () {
@@ -336,9 +373,7 @@ vevet.pageLoad.onLoaded(function () {
         var pagination = container.querySelector(".".concat(className, "-slider-pagination"));
         var arrowPrev = container.querySelector(".".concat(className, "-slider").concat(isThumb ? '-thumb' : '', "-controls .").concat(className, "-slider-prev"));
         var arrowNext = container.querySelector(".".concat(className, "-slider").concat(isThumb ? '-thumb' : '', "-controls .").concat(className, "-slider-next"));
-        var sliderInit = new Swiper(slider, __assign({ 
-            //modules: [Navigation, Thumbs, Pagination, EffectFade, Autoplay],
-            thumbs: {
+        var sliderInit = new Swiper(slider, __assign({ thumbs: {
                 swiper: thumb
             }, pagination: {
                 el: pagination,
@@ -366,7 +401,7 @@ vevet.pageLoad.onLoaded(function () {
                     effect: 'fade',
                     allowTouchMove: false,
                     autoplay: {
-                        delay: 6000,
+                        delay: 10000,
                         disableOnInteraction: false
                     }
                 }
@@ -382,8 +417,22 @@ vevet.pageLoad.onLoaded(function () {
             return;
         }
         containerArray.forEach(function (item, sliderIndex) {
+            var sliderThumb = makeSlider({
+                container: item,
+                className: 'about-info',
+                isThumb: true,
+                config: {
+                    effect: 'fade',
+                    allowTouchMove: false,
+                    autoplay: {
+                        delay: 10000,
+                        disableOnInteraction: false
+                    }
+                }
+            });
             var slider = makeSlider({
                 container: item,
+                thumb: sliderThumb,
                 className: 'about-info',
                 renderBullets: function (index, className) {
                     return "\n            <button class=\"".concat(className, "\">\n              <svg class=\"pagination-star\" width=\"28\" height=\"26\" viewBox=\"0 0 28 26\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path d=\"M14 1.61804L16.6677 9.82827L16.7799 10.1738H17.1432H25.776L18.7919 15.248L18.498 15.4615L18.6103 15.807L21.2779 24.0172L14.2939 18.943L14 18.7295L13.7061 18.943L6.72206 24.0172L9.38973 15.807L9.50199 15.4615L9.20809 15.248L2.22405 10.1738H10.8568H11.2201L11.3323 9.82827L14 1.61804Z\" fill=\"transparent\" stroke=\"#066dca\"/>\n              </svg>\n            </button>\n          ");
@@ -397,6 +446,12 @@ vevet.pageLoad.onLoaded(function () {
                     }
                 }
             });
+            if (sliderThumb) {
+                sliders.push({
+                    name: "about-info-".concat(sliderIndex, "-thumb"),
+                    slider: sliderThumb
+                });
+            }
             if (slider) {
                 sliders.push({ name: "about-info-".concat(sliderIndex), slider: slider });
             }
@@ -419,12 +474,10 @@ vevet.pageLoad.onLoaded(function () {
                     spaceBetween: 30,
                     breakpoints: {
                         660: {
-                            slidesPerView: 2,
-                            slidesPerGroup: 2
+                            slidesPerView: 2
                         },
                         1199: {
-                            slidesPerView: 3,
-                            slidesPerGroup: 3
+                            slidesPerView: 3
                         }
                     }
                 }
@@ -652,6 +705,73 @@ vevet.pageLoad.onLoaded(function () {
         });
     };
     fadeContentInit();
+    //imageAppearInit
+    var makeTimelineAppearImage = function (itemProps) {
+        var item = itemProps;
+        var timeline = new Vevet.Timeline({ duration: 3000 });
+        timeline.addCallback('progress', function (_a) {
+            var easing = _a.easing;
+            item.style.transform = "scale(".concat(1 + (0.4 - easing * 0.4), ")");
+        });
+        timeline.addCallback('start', function () {
+            item.classList.add('showed');
+        });
+        timeline.addCallback('end', function () {
+            item.style.transform = '';
+        });
+        return timeline;
+    };
+    var appearHandler = function (container, item) {
+        var timeline = makeTimelineAppearImage(item);
+        useObserver({
+            target: container,
+            isCallOnce: true,
+            callbackIn: function () {
+                timeline.play();
+            }
+        });
+    };
+    var imageAppearInit = function () {
+        var appearContainer = document.querySelectorAll('.appear-container');
+        if (appearContainer.length === 0) {
+            return;
+        }
+        appearContainer.forEach(function (container) {
+            var item = container.querySelector('.appear-content');
+            if (!item) {
+                return;
+            }
+            appearHandler(container, item);
+        });
+    };
+    imageAppearInit();
+    //paginationHelp
+    var listenerPaginationHandler = function (containerArray) {
+        containerArray.forEach(function (container) {
+            var content = container.querySelector('.pagination__wrapper');
+            if (!content) {
+                return;
+            }
+            var width = container.getBoundingClientRect().width;
+            var widthInner = content.getBoundingClientRect().width;
+            if (widthInner > width) {
+                container.classList.add('overlay');
+            }
+        });
+    };
+    var paginationHelp = function () {
+        var containerArray = document.querySelectorAll('.pagination');
+        if (containerArray.length === 0) {
+            return;
+        }
+        listenerPaginationHandler(containerArray);
+        window.addEventListener('resize', debounce({
+            callback: function () {
+                listenerPaginationHandler(containerArray);
+            }
+        }));
+    };
+    paginationHelp();
     var popups = initPopups();
     var formArr = document.querySelectorAll('form');
     var hasError = false;
@@ -686,12 +806,15 @@ vevet.pageLoad.onLoaded(function () {
                 var timeline = _a.timeline, isThanks = _a.isThanks, isError = _a.isError;
                 if (isThanks && !hasError) {
                     timeline === null || timeline === void 0 ? void 0 : timeline.play();
-                    // if (inputs.length !== 0) {
-                    //   inputs.forEach((inputProp) => {
-                    //     const input = inputProp;
-                    //     input.value = '';
-                    //   });
-                    // }
+                    formArr.forEach(function (form) {
+                        var inputs = Array.from(form.querySelectorAll('input, textarea'));
+                        if (inputs.length !== 0) {
+                            inputs.forEach(function (inputProp) {
+                                var input = inputProp;
+                                input.value = '';
+                            });
+                        }
+                    });
                 }
                 else if (isError && hasError) {
                     timeline === null || timeline === void 0 ? void 0 : timeline.play();

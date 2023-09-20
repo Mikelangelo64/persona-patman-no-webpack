@@ -12,15 +12,15 @@
       <div class="_container">
         <div class="header__wrapper">
           <a class="logo-link header__logo" href="./index.html">
-            <img src="assets/img/logo.svg" alt="logo" draggable="false"
-          /></a>
+            <img src="assets/img/logo.svg" alt="logo" draggable="false" />
+          </a>
           <nav class="menu header__menu">
             <ul class="menu-list">
               <li class="menu-list__item">
-                <a class="menu__link" href="./about.html">Про Нас</a>
+                <a class="menu__link" href="./about.html">Про нас</a>
               </li>
               <li class="menu-list__item">
-                <a class="menu__link" href="./immigration.html">Іміграція</a>
+                <a class="menu__link" href="./immigration.html">Імміграція</a>
               </li>
               <li class="menu-list__item">
                 <a class="menu__link" href="./recruiting.html">Рекрутинг</a>
@@ -40,13 +40,39 @@
             </ul>
           </nav>
           <div class="header__buttons">
+            <button
+              class="header__search popup-open"
+              data-popup="_popup-search"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 13 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="5.86381"
+                  cy="5.86393"
+                  r="5.24333"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></circle>
+                <path
+                  d="M9.51062 9.78296L11.5663 11.8333"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
             <ul class="menu__lang desktop">
               <li>
-                <span class="lang-item lang-item-current"
-                  >eng<img
-                    src="assets/img/arrow-down.svg"
-                    alt="language toggle"
-                /></span>
+                <span class="lang-item lang-item-current">
+                  eng
+                  <img src="assets/img/arrow-down.svg" alt="language toggle" />
+                </span>
                 <ul>
                   <li
                     class="lang-item lang-item-1 lang-item-en lang-item-first"
@@ -59,6 +85,56 @@
             <button class="menu-burger popup-open" data-popup="_popup-menu">
               <span></span>
             </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="popup popup-search search__popup"
+        data-popupname="_popup-search"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div class="popup__overlay"></div>
+        <div class="popup__additional"></div>
+        <div class="popup__scroll">
+          <div class="popup__wrapper">
+            <button class="popup__close hidden">
+              <img src="assets/img/popup-close.svg" alt="close" />
+            </button>
+            <div class="popup__content">
+              <div class="search">
+                <form class="form search__form" id="form-search" action="post">
+                  <input id="popup-name" type="text" name="name" />
+                  <button type="submit">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 13 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="5.86381"
+                        cy="5.86393"
+                        r="5.24333"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></circle>
+                      <path
+                        d="M9.51062 9.78296L11.5663 11.8333"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                  </button>
+                </form>
+                <button class="popup__close">
+                  <img src="assets/img/popup-close-black.svg" alt="close" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -86,53 +162,63 @@
                       class="menu__link anchor"
                       href="./about.html"
                       data-goto=""
-                      >Про Нас</a
                     >
+                      Про нас
+                    </a>
                   </li>
                   <li class="menu-list__item">
                     <a
                       class="menu__link anchor"
                       href="./immigration.html"
                       data-goto=""
-                      >Іміграція</a
                     >
+                      Імміграція
+                    </a>
                   </li>
                   <li class="menu-list__item">
                     <a
                       class="menu__link anchor"
                       href="./recruiting.html"
                       data-goto=""
-                      >Рекрутинг</a
                     >
+                      Рекрутинг
+                    </a>
                   </li>
                   <li class="menu-list__item">
                     <a
                       class="menu__link anchor"
                       href="./partnership.html"
                       data-goto=""
-                      >Партнерство</a
                     >
+                      Партнерство
+                    </a>
                   </li>
                   <li class="menu-list__item">
-                    <a class="menu__link anchor" href="./team.html" data-goto=""
-                      >Команда</a
+                    <a
+                      class="menu__link anchor"
+                      href="./team.html"
+                      data-goto=""
                     >
+                      Команда
+                    </a>
                   </li>
                   <li class="menu-list__item">
                     <a
                       class="menu__link anchor"
                       href="./cases.html"
                       data-goto=""
-                      >Кейси</a
                     >
+                      Кейси
+                    </a>
                   </li>
                   <li class="menu-list__item">
                     <a
                       class="menu__link anchor"
                       href="./contacts.html"
                       data-goto=""
-                      >Контакти</a
                     >
+                      Контакти
+                    </a>
                   </li>
                 </ul>
               </nav>
@@ -228,7 +314,8 @@
                 class="desktop"
                 src="assets/img/popup-close.svg"
                 alt="close"
-              /><img
+              />
+              <img
                 class="mobile"
                 src="assets/img/popup-close-black.svg"
                 alt="close"
@@ -240,70 +327,61 @@
                 <div class="action__main">
                   <form class="form action__form" id="form-popup" action="post">
                     <div>
-                      <label for="popup-select">
-                        <strong>Тип звернення</strong
-                        ><select
-                          id="popup-select"
-                          name="select"
-                          form="form-popup"
-                        >
-                          <option value="value 1" selected>value 1</option>
-                          <option value="value 2">value 2</option>
-                          <option value="value 3">value 3</option></select
-                        ><span class="wpcf7-not-valid-tip"
-                          >Невірний формат</span
-                        ></label
-                      >
-                    </div>
-                    <div>
                       <label for="popup-name">
-                        <strong>Ім’я</strong
-                        ><input id="popup-name" type="text" name="name" /><span
-                          class="wpcf7-not-valid-tip"
-                          >Невірний формат</span
-                        ></label
-                      ><label for="popup-lastname">
-                        <strong>Прізвище</strong
-                        ><input
+                        <strong>Ім’я</strong>
+                        <input id="popup-name" type="text" name="name" />
+                        <span class="wpcf7-not-valid-tip">
+                          Невірний формат
+                        </span>
+                      </label>
+                      <label for="popup-lastname">
+                        <strong>Прізвище</strong>
+                        <input
                           id="popup-lastname"
                           type="text"
                           name="lastname"
-                        /><span class="wpcf7-not-valid-tip"
-                          >Невірний формат</span
-                        ></label
-                      >
+                        />
+                        <span class="wpcf7-not-valid-tip"
+                          >Невірний формат
+                        </span>
+                      </label>
                     </div>
                     <div>
                       <label for="popup-email">
-                        <strong>Email</strong
-                        ><input
-                          id="popup-email"
-                          type="email"
-                          name="email"
-                        /><span class="wpcf7-not-valid-tip"
-                          >Невірний формат</span
-                        ></label
-                      ><label for="popup-telephone">
-                        <strong>Телефон</strong
-                        ><input
+                        <strong>Email</strong>
+                        <input id="popup-email" type="email" name="email" />
+                        <span class="wpcf7-not-valid-tip">Невірний формат</span>
+                      </label>
+                      <label for="popup-telephone">
+                        <strong>Телефон</strong>
+                        <input
                           id="popup-telephone"
                           type="tel"
                           name="telephone"
-                        /><span class="wpcf7-not-valid-tip"
-                          >Невірний формат</span
-                        ></label
-                      >
+                        />
+                        <span class="wpcf7-not-valid-tip">Невірний формат</span>
+                      </label>
                     </div>
                     <div>
                       <label for="popup-request">
-                        <strong>Чим ми можемо допомогти</strong
-                        ><textarea id="popup-request" name="request"></textarea
-                        ><span class="wpcf7-not-valid-tip"
-                          >Невірний формат</span
-                        ></label
-                      >
+                        <strong>Чим ми можемо допомогти</strong>
+                        <textarea id="popup-request" name="request"></textarea>
+                        <span class="wpcf7-not-valid-tip">Невірний формат</span>
+                      </label>
                     </div>
-                    <p><button type="submit">Відправити</button></p>
+                    <p>
+                      <button type="submit">Відправити</button>
+                      <span>
+                        Натискаючи на кнопку "Відправити" ви погоджуєтесь з
+                        <a
+                          href="./document.html"
+                          target="_blank"
+                          rel="noreferrer"
+                          >умовами конфіденційності</a
+                        >
+                        <span>компанії Persona Patman</span>
+                      </span>
+                    </p>
                   </form>
                 </div>
               </div>
@@ -312,12 +390,13 @@
         </div>
       </div>
     </header>
+
     <div class="breadcrumbs__container _container">
       <nav class="breadcrumbs">
         <span>
           <span> <a href="./index.html">Головна</a> </span> /
-          <span class="breadcrumb_last" aria-current="page">Кейси</span></span
-        >
+          <span class="breadcrumb_last" aria-current="page">Кейси</span>
+        </span>
       </nav>
     </div>
     <section class="banner-inner">
@@ -334,203 +413,63 @@
         </div>
       </div>
     </section>
-    <article class="section separate">
-      <div class="_container">
-        <div class="separate__wrapper">
-          <div class="separate-media">
-            <div class="separate-media__container">
-              <img src="assets/img/cases/separate.jpg" alt="Кейси" />
-            </div>
-          </div>
-          <div class="separate__text">
-            <div class="separate__description typography">
-              <p>
-                Ми щодня працюємо, щоб зробити процес міграції та
-                працевлшатування за кордоном комфортним і легальним.
-              </p>
-              <br />
-              <p>
-                Комусь ми допомагаємо вирішити проблему, а комусь - втілити
-                мрію.
-              </p>
-              <br />
-              <p>
-                Тому тут ми ділимось практичним досвідом допомоги людям і
-                компаніям вирішити всі завдання, повязані з переїздом і
-                працевлаштування іноземців.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
     <div class="case-catalog section">
       <div class="_container">
         <div class="case-catalog__wrapper">
           <ul class="case-catalog-list">
             <li>
-              <a class="case-catalog__item" href="./case-article.html"
-                ><span class="case-catalog-img"
-                  ><span class="case-catalog-img__container"
-                    ><img
+              <a class="case-catalog__item" href="./case-article.html">
+                <span class="case-catalog-img">
+                  <span class="case-catalog-img__container">
+                    <img
                       src="assets/img/cases/case-1.jpg"
                       alt="1"
-                      loading="lazy" /></span></span
-                ><span class="case-catalog-date date"
-                  ><span class="date__label"
-                    ><img src="assets/img/date.svg" alt="date" /></span
-                  ><time class="date__value" datatime="undefined"
-                    >22.07.2023</time
-                  ></span
-                ><span class="case-catalog__title"
-                  >Persona Patman допомогла іноземцю отримати громадянство
-                  України</span
-                ><span class="case-catalog__more link-more"
-                  ><span class="link-more__text">Детальніше</span
-                  ><span class="link-more__label"
-                    ><img
+                      loading="lazy"
+                    />
+                  </span>
+                </span>
+                <span class="case-catalog__title">Імміграційні кейси</span>
+                <span class="case-catalog__more link-more">
+                  <span class="link-more__text">Детальніше</span>
+                  <span class="link-more__label">
+                    <img
                       src="assets/img/arrow-more.svg"
                       alt="possibilities-details"
-                      draggable="false" /></span></span
-              ></a>
+                      draggable="false"
+                    />
+                  </span>
+                </span>
+              </a>
             </li>
             <li>
-              <a class="case-catalog__item" href="./case-article.html"
-                ><span class="case-catalog-img"
-                  ><span class="case-catalog-img__container"
-                    ><img
+              <a class="case-catalog__item" href="./case-article.html">
+                <span class="case-catalog-img">
+                  <span class="case-catalog-img__container">
+                    <img
                       src="assets/img/cases/case-2.jpg"
                       alt="2"
-                      loading="lazy" /></span></span
-                ><span class="case-catalog-date date"
-                  ><span class="date__label"
-                    ><img src="assets/img/date.svg" alt="date" /></span
-                  ><time class="date__value" datatime="undefined"
-                    >22.07.2023</time
-                  ></span
-                ><span class="case-catalog__title"
-                  >Persona Patman допомогла латвійській компанії Biovela Group
-                  UAB знайти іноземних спеціалістів з країн Середньої Азії і
-                  Грузії</span
-                ><span class="case-catalog__more link-more"
-                  ><span class="link-more__text">Детальніше</span
-                  ><span class="link-more__label"
-                    ><img
+                      loading="lazy"
+                    />
+                  </span>
+                </span>
+                <span class="case-catalog__title">Рекрутингові кейси</span>
+                <span class="case-catalog__more link-more">
+                  <span class="link-more__text">Детальніше</span>
+                  <span class="link-more__label">
+                    <img
                       src="assets/img/arrow-more.svg"
                       alt="possibilities-details"
-                      draggable="false" /></span></span
-              ></a>
-            </li>
-            <li>
-              <a class="case-catalog__item" href="./case-article.html"
-                ><span class="case-catalog-img"
-                  ><span class="case-catalog-img__container"
-                    ><img
-                      src="assets/img/cases/case-1.jpg"
-                      alt="3"
-                      loading="lazy" /></span></span
-                ><span class="case-catalog-date date"
-                  ><span class="date__label"
-                    ><img src="assets/img/date.svg" alt="date" /></span
-                  ><time class="date__value" datatime="undefined"
-                    >22.07.2023</time
-                  ></span
-                ><span class="case-catalog__title"
-                  >Persona Patman допомогла іноземцю отримати громадянство
-                  України</span
-                ><span class="case-catalog__more link-more"
-                  ><span class="link-more__text">Детальніше</span
-                  ><span class="link-more__label"
-                    ><img
-                      src="assets/img/arrow-more.svg"
-                      alt="possibilities-details"
-                      draggable="false" /></span></span
-              ></a>
-            </li>
-            <li>
-              <a class="case-catalog__item" href="./case-article.html"
-                ><span class="case-catalog-img"
-                  ><span class="case-catalog-img__container"
-                    ><img
-                      src="assets/img/cases/case-2.jpg"
-                      alt="4"
-                      loading="lazy" /></span></span
-                ><span class="case-catalog-date date"
-                  ><span class="date__label"
-                    ><img src="assets/img/date.svg" alt="date" /></span
-                  ><time class="date__value" datatime="undefined"
-                    >22.07.2023</time
-                  ></span
-                ><span class="case-catalog__title"
-                  >Persona Patman допомогла латвійській компанії Biovela Group
-                  UAB знайти іноземних спеціалістів з країн Середньої Азії і
-                  Грузії</span
-                ><span class="case-catalog__more link-more"
-                  ><span class="link-more__text">Детальніше</span
-                  ><span class="link-more__label"
-                    ><img
-                      src="assets/img/arrow-more.svg"
-                      alt="possibilities-details"
-                      draggable="false" /></span></span
-              ></a>
-            </li>
-            <li>
-              <a class="case-catalog__item" href="./case-article.html"
-                ><span class="case-catalog-img"
-                  ><span class="case-catalog-img__container"
-                    ><img
-                      src="assets/img/cases/case-1.jpg"
-                      alt="5"
-                      loading="lazy" /></span></span
-                ><span class="case-catalog-date date"
-                  ><span class="date__label"
-                    ><img src="assets/img/date.svg" alt="date" /></span
-                  ><time class="date__value" datatime="undefined"
-                    >22.07.2023</time
-                  ></span
-                ><span class="case-catalog__title"
-                  >Persona Patman допомогла іноземцю отримати громадянство
-                  України</span
-                ><span class="case-catalog__more link-more"
-                  ><span class="link-more__text">Детальніше</span
-                  ><span class="link-more__label"
-                    ><img
-                      src="assets/img/arrow-more.svg"
-                      alt="possibilities-details"
-                      draggable="false" /></span></span
-              ></a>
-            </li>
-            <li>
-              <a class="case-catalog__item" href="./case-article.html"
-                ><span class="case-catalog-img"
-                  ><span class="case-catalog-img__container"
-                    ><img
-                      src="assets/img/cases/case-2.jpg"
-                      alt="6"
-                      loading="lazy" /></span></span
-                ><span class="case-catalog-date date"
-                  ><span class="date__label"
-                    ><img src="assets/img/date.svg" alt="date" /></span
-                  ><time class="date__value" datatime="undefined"
-                    >22.07.2023</time
-                  ></span
-                ><span class="case-catalog__title"
-                  >Persona Patman допомогла латвійській компанії Biovela Group
-                  UAB знайти іноземних спеціалістів з країн Середньої Азії і
-                  Грузії</span
-                ><span class="case-catalog__more link-more"
-                  ><span class="link-more__text">Детальніше</span
-                  ><span class="link-more__label"
-                    ><img
-                      src="assets/img/arrow-more.svg"
-                      alt="possibilities-details"
-                      draggable="false" /></span></span
-              ></a>
+                      draggable="false"
+                    />
+                  </span>
+                </span>
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </div>
+
     <footer class="footer">
       <article class="section footer-additional">
         <div class="_container">
@@ -575,106 +514,118 @@
               <li class="footer-navigation__li">
                 <ul class="footer-navigation__col">
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./about.html"
-                      >Про нас</a
-                    >
+                    <a class="footer-navigation__item" href="./about.html">
+                      Про нас
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./team.html"
-                      >Команда</a
-                    >
+                    <a class="footer-navigation__item" href="./team.html">
+                      Команда
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./partnership.html"
-                      >Партнерство</a
+                    <a
+                      class="footer-navigation__item"
+                      href="./partnership.html"
                     >
+                      Партнерство
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./pro-bono.html"
-                      >Про Боно</a
-                    >
+                    <a class="footer-navigation__item" href="./pro-bono.html">
+                      Про Боно
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./news.html"
-                      >Новини</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="footer-navigation__li">
-                <ul class="footer-navigation__col">
-                  <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./immigration.html"
-                      >Імміграція</a
-                    >
-                  </li>
-                  <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./immigration.html"
-                      >Легалізація</a
-                    >
-                  </li>
-                  <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./cases.html"
-                      >Кейси</a
-                    >
+                    <a class="footer-navigation__item" href="./news.html">
+                      Новини
+                    </a>
                   </li>
                 </ul>
               </li>
               <li class="footer-navigation__li">
                 <ul class="footer-navigation__col">
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./recruting.html"
-                      >Рекрутинг</a
+                    <a
+                      class="footer-navigation__item"
+                      href="./immigration.html"
                     >
+                      Імміграція
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./recruting.html"
-                      >Адаптація</a
+                    <a
+                      class="footer-navigation__item"
+                      href="./immigration.html"
                     >
+                      Легалізація
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./cases.html"
-                      >Кейси</a
-                    >
-                  </li>
-                  <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./partnership.html"
-                      >Наші партнери</a
-                    >
+                    <a class="footer-navigation__item" href="./cases.html">
+                      Імміграційні кейси
+                    </a>
                   </li>
                 </ul>
               </li>
               <li class="footer-navigation__li">
                 <ul class="footer-navigation__col">
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./info-for.html"
-                      >Для урядів</a
-                    >
+                    <a class="footer-navigation__item" href="./recruting.html">
+                      Рекрутинг
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./info-for.html"
-                      >Для місцевої влади</a
-                    >
+                    <a class="footer-navigation__item" href="./recruting.html">
+                      Адаптація
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./info-for.html"
-                      >Для донорів і NGO</a
-                    >
+                    <a class="footer-navigation__item" href="./cases.html">
+                      Рекрутингові кейси
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./info-for.html"
-                      >Для банків і фінтеху</a
+                    <a
+                      class="footer-navigation__item"
+                      href="./partnership.html"
                     >
+                      Наші партнери
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer-navigation__li">
+                <ul class="footer-navigation__col">
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="./info-for.html">
+                      Для урядів
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./info-for.html"
-                      >Для компаній</a
-                    >
+                    <a class="footer-navigation__item" href="./info-for.html">
+                      Для місцевої влади
+                    </a>
                   </li>
                   <li class="footer-navigation__row">
-                    <a class="footer-navigation__item" href="./info-for.html"
-                      >Для мігрантів</a
-                    >
+                    <a class="footer-navigation__item" href="./info-for.html">
+                      Для донорів і NGO
+                    </a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="./info-for.html">
+                      Для банків і фінтеху
+                    </a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="./info-for.html">
+                      Для компаній
+                    </a>
+                  </li>
+                  <li class="footer-navigation__row">
+                    <a class="footer-navigation__item" href="./info-for.html">
+                      Для мігрантів
+                    </a>
                   </li>
                 </ul>
               </li>
@@ -683,7 +634,8 @@
           <div class="footer-bottom">
             <div class="footer-bottom__item">
               <p class="footer__copyright">
-                © 2023 Persona Patman LLC | All Rights Reserved
+                © 2023 Persona Patman LLC&nbsp&nbsp|&nbsp&nbspAll Rights
+                Reserved
               </p>
             </div>
             <div class="footer-bottom__item">
@@ -691,47 +643,57 @@
                 <li class="footer-bottom__list__li">
                   <a
                     class="footer-bottom___link"
-                    href="#"
+                    href="./document.html"
                     target="_blank"
                     rel="noreferrer"
-                    >Terms of Use</a
                   >
+                    Terms of Use
+                  </a>
                 </li>
                 <li class="footer-bottom__list__li">
                   <a
                     class="footer-bottom___link"
-                    href="#"
+                    href="./document.html"
                     target="_blank"
                     rel="noreferrer"
-                    >Privacy Policy</a
                   >
+                    Privacy Policy
+                  </a>
                 </li>
                 <li class="footer-bottom__list__li">
                   <a
                     class="footer-bottom___link"
-                    href="#"
+                    href="./document.html"
                     target="_blank"
                     rel="noreferrer"
-                    >Cookie Policy</a
                   >
+                    Cookie Policy
+                  </a>
                 </li>
                 <li class="footer-bottom__list__li">
                   <a
                     class="footer-bottom___link"
-                    href="#"
+                    href="./document.html"
                     target="_blank"
                     rel="noreferrer"
-                    >Disclaimer</a
                   >
+                    Disclaimer
+                  </a>
                 </li>
               </ul>
             </div>
             <div class="footer-bottom__item">
-              <a class="develop" href="#" target="_blank" rel="noreferrer"
-                ><span class="develop__text">Розробка сайту</span
-                ><span class="develop__img"
-                  ><img src="assets/img/impulse.svg" alt="impulse" /></span
-              ></a>
+              <a
+                class="develop"
+                href="https://impulse-design.com.ua/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span class="develop__text">Розробка сайту</span>
+                <span class="develop__img">
+                  <img src="assets/img/impulse.svg" alt="impulse" />
+                </span>
+              </a>
             </div>
           </div>
         </div>

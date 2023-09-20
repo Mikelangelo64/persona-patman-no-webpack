@@ -19,6 +19,44 @@ vevet.pageLoad.onLoaded(() => {
   scrollBarInit();
 
   //config
+  //clearScrollListener
+  const clearScrollListener = (listener: () => void) => {
+    window.removeEventListener('scroll', listener);
+  };
+
+  //debounce
+  type TCallbackDebounce = () => void;
+
+  interface IDebounce {
+    callback: TCallbackDebounce;
+    wait?: number;
+    isImmediate?: boolean;
+  }
+
+  const debounce = ({
+    callback,
+    wait = 250,
+    isImmediate = false,
+  }: IDebounce) => {
+    let timeout: NodeJS.Timeout | undefined;
+
+    return () => {
+      const later = () => {
+        timeout = undefined;
+        callback();
+      };
+
+      const isCallNow = isImmediate && !timeout;
+      clearTimeout(timeout);
+
+      timeout = setTimeout(later, wait);
+
+      if (isCallNow) {
+        callback();
+      }
+    };
+  };
+
   //useOutsideClick
   type TCallback = (element: Element) => void;
 
@@ -118,6 +156,7 @@ vevet.pageLoad.onLoaded(() => {
     if (parent) {
       const element = parent;
       element.style.display = `${progress > 0 ? 'flex' : 'none'}`;
+
       element.style.opacity = `${progress > 0 ? 1 : 0}`;
     }
 
@@ -128,9 +167,16 @@ vevet.pageLoad.onLoaded(() => {
 
     if (scroll) {
       const element = scroll;
-      element.style.opacity = `${easing}`;
+
+      if (!parent.classList.contains('popup-search')) {
+        element.style.opacity = `${easing}`;
+      }
+
       if (parent.classList.contains('popup-menu')) {
         element.style.transform = `translateX(${(1 - easing) * 100}%)`;
+      } else if (parent.classList.contains('popup-search')) {
+        const { height } = parent.getBoundingClientRect();
+        element.style.transform = `translateY(${(easing - 1) * height}rem)`;
       } else {
         element.style.transform = `translateY(${(1 - easing) * 2}rem)`;
       }
@@ -164,8 +210,11 @@ vevet.pageLoad.onLoaded(() => {
     });
     timeline.addCallback('start', () => {
       if (!timeline.isReversed) {
-        document.querySelector('html')?.classList.add('lock');
-        document.querySelector('body')?.classList.add('lock');
+        if (!parent.classList.contains('popup-search')) {
+          document.querySelector('html')?.classList.add('lock');
+          document.querySelector('body')?.classList.add('lock');
+        }
+
         parent.classList.add('_opened');
 
         if (video) {
@@ -338,6 +387,14 @@ vevet.pageLoad.onLoaded(() => {
           this._video?.pause();
         }
       });
+
+      if (this._parent.classList.contains('popup-search')) {
+        window.addEventListener('scroll', () => {
+          if (this._parent.classList.contains('_opened')) {
+            this._timeline?.reverse();
+          }
+        });
+      }
     }
 
     initOpen(popupArr: Popup[]) {
@@ -433,7 +490,6 @@ vevet.pageLoad.onLoaded(() => {
     ) as HTMLElement | null;
 
     const sliderInit = new Swiper(slider, {
-      //modules: [Navigation, Thumbs, Pagination, EffectFade, Autoplay],
       thumbs: {
         swiper: thumb,
       },
@@ -488,7 +544,7 @@ vevet.pageLoad.onLoaded(() => {
           effect: 'fade',
           allowTouchMove: false,
           autoplay: {
-            delay: 6000,
+            delay: 10000,
             disableOnInteraction: false,
           },
         },
@@ -499,6 +555,7 @@ vevet.pageLoad.onLoaded(() => {
       }
     });
   };
+
   const sliderInfoInit = (sliders: Array<IInitializedSlider>) => {
     const containerArray = document.querySelectorAll(
       '.about-info'
@@ -509,8 +566,23 @@ vevet.pageLoad.onLoaded(() => {
     }
 
     containerArray.forEach((item, sliderIndex) => {
+      const sliderThumb = makeSlider({
+        container: item,
+        className: 'about-info',
+        isThumb: true,
+        config: {
+          effect: 'fade',
+          allowTouchMove: false,
+          autoplay: {
+            delay: 10000,
+            disableOnInteraction: false,
+          },
+        },
+      });
+
       const slider = makeSlider({
         container: item,
+        thumb: sliderThumb,
         className: 'about-info',
         renderBullets: (index, className) => {
           return `
@@ -530,6 +602,13 @@ vevet.pageLoad.onLoaded(() => {
           },
         },
       });
+
+      if (sliderThumb) {
+        sliders.push({
+          name: `about-info-${sliderIndex}-thumb`,
+          slider: sliderThumb,
+        });
+      }
 
       if (slider) {
         sliders.push({ name: `about-info-${sliderIndex}`, slider });
@@ -562,12 +641,10 @@ vevet.pageLoad.onLoaded(() => {
           breakpoints: {
             660: {
               slidesPerView: 2,
-              slidesPerGroup: 2,
             },
 
             1199: {
               slidesPerView: 3,
-              slidesPerGroup: 3,
             },
           },
           // autoplay: {
@@ -920,6 +997,103 @@ vevet.pageLoad.onLoaded(() => {
 
   fadeContentInit();
 
+  //imageAppearInit
+  const makeTimelineAppearImage = (itemProps: HTMLImageElement) => {
+    const item = itemProps;
+    const timeline = new Vevet.Timeline({ duration: 3000 });
+
+    timeline.addCallback('progress', ({ easing }) => {
+      item.style.transform = `scale(${1 + (0.4 - easing * 0.4)})`;
+    });
+
+    timeline.addCallback('start', () => {
+      item.classList.add('showed');
+    });
+
+    timeline.addCallback('end', () => {
+      item.style.transform = '';
+    });
+
+    return timeline;
+  };
+
+  const appearHandler = (container: HTMLDivElement, item: HTMLImageElement) => {
+    const timeline = makeTimelineAppearImage(item);
+
+    useObserver({
+      target: container,
+      isCallOnce: true,
+      callbackIn: () => {
+        timeline.play();
+      },
+    });
+  };
+
+  const imageAppearInit = () => {
+    const appearContainer =
+      document.querySelectorAll<HTMLDivElement>('.appear-container');
+
+    if (appearContainer.length === 0) {
+      return;
+    }
+
+    appearContainer.forEach((container) => {
+      const item = container.querySelector<HTMLImageElement>('.appear-content');
+
+      if (!item) {
+        return;
+      }
+
+      appearHandler(container, item);
+    });
+  };
+
+  imageAppearInit();
+
+  //paginationHelp
+  const listenerPaginationHandler = (
+    containerArray: NodeListOf<HTMLElement>
+  ) => {
+    containerArray.forEach((container) => {
+      const content = container.querySelector<HTMLElement>(
+        '.pagination__wrapper'
+      );
+
+      if (!content) {
+        return;
+      }
+
+      const { width } = container.getBoundingClientRect();
+      const { width: widthInner } = content.getBoundingClientRect();
+
+      if (widthInner > width) {
+        container.classList.add('overlay');
+      }
+    });
+  };
+
+  const paginationHelp = () => {
+    const containerArray =
+      document.querySelectorAll<HTMLElement>('.pagination');
+
+    if (containerArray.length === 0) {
+      return;
+    }
+
+    listenerPaginationHandler(containerArray);
+
+    window.addEventListener(
+      'resize',
+      debounce({
+        callback: () => {
+          listenerPaginationHandler(containerArray);
+        },
+      })
+    );
+  };
+
+  paginationHelp();
+
   const popups = initPopups();
 
   const formArr = document.querySelectorAll('form');
@@ -961,12 +1135,20 @@ vevet.pageLoad.onLoaded(() => {
           if (isThanks && !hasError) {
             timeline?.play();
 
-            // if (inputs.length !== 0) {
-            //   inputs.forEach((inputProp) => {
-            //     const input = inputProp;
-            //     input.value = '';
-            //   });
-            // }
+            formArr.forEach((form) => {
+              const inputs = Array.from(
+                form.querySelectorAll('input, textarea') as NodeListOf<
+                  HTMLInputElement | HTMLTextAreaElement
+                >
+              );
+
+              if (inputs.length !== 0) {
+                inputs.forEach((inputProp) => {
+                  const input = inputProp;
+                  input.value = '';
+                });
+              }
+            });
           } else if (isError && hasError) {
             timeline?.play();
           } else {
